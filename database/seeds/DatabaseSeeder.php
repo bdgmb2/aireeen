@@ -11,6 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $this->command->info("Generating airports...");
+        $this->call(airportSeed::class);
+        $this->command->info("Generating aircraft...");
+        $this->call(aircraftSeed::class);
+        $this->command->info("Generating passengers...");
+        $this->call(passengerSeed::class);
+        $this->command->info("Generating flights...");
+        $this->call(manualFlightSeed::class);
     }
 }

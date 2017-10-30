@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+var mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,5 +11,16 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix.styles([
+    'resources/assets/css/normalize.css',
+    'resources/assets/css/bulma.css',
+    'resources/assets/css/chosen.min.css',
+    'resources/assets/css/datepicker.min.css',
+    'public/css/base.css'
+], 'public/css/airline.css');
+
+mix.scripts([
+    'resources/assets/js/jquery-3.2.1.min.js',
+    'resources/assets/js/chosen.jquery.min.js',
+    'resources/assets/js/datepicker.min.js'
+], 'public/js/airline.js');

@@ -12,5 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home', ['airports' => App\Airport::all()]);
+});
+
+Route::get('/about', function() {
+    return view('about.about');
+});
+
+Route::get('/about/destinations', function() {
+    return view('about.wherefly', [
+        'flightPaths' => App\Flight::where('departureTime', '<=', date_modify((new DateTime())->setTime(0, 0, 0), '+2 day'))
+            ->select('sourceAirport', 'destinationAirport')
+            ->distinct()
+            ->get(),
+        'airports' => App\Airport::all()]);
 });
