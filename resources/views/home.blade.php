@@ -1,21 +1,49 @@
 @extends('layouts.airline')
 @section('title', 'Home')
 
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/homepage.css') }}" />
+@endsection
+
 @section('scripts')
     <script type="text/javascript">
-        $(".chosen-dropdown").chosen({
-            width: "80%",
-            no_results_text: "Sorry, We don't fly to ",
-            placeholder_text_single: "Select an airport"
-        });
-        $(".datepick").datepicker({
-            autoHide: true
-        });
-        $('input[type=radio]').change(function() {
-            if (this.value === 'oneway')
-                $('.dateReturning').hide();
-            else
-                $('.dateReturning').show();
+
+        $(document).ready(function() {
+            $(".chosen-dropdown").chosen({
+                width: "80%",
+                no_results_text: "Sorry, We don't fly to ",
+                placeholder_text_single: "Select an airport"
+            });
+            $(".datepick").datepicker({
+                autoHide: true
+            });
+            $('input[type=radio]').change(function() {
+                if (this.value === 'oneway')
+                    $('.dateReturning').hide();
+                else
+                    $('.dateReturning').show();
+            });
+
+            $("#manage-booking, #flight-status").hide();
+
+            $("#btn-book-flight").click(function() {
+                $(".column .active").removeClass("active");
+                $("#btn-book-flight").addClass("active");
+                $("#book-flight").show();
+                $("#manage-booking, #flight-status").hide();
+            });
+            $("#btn-manage-booking").click(function() {
+                $(".column .active").removeClass("active");
+                $("#btn-manage-booking").addClass("active");
+                $("#manage-booking").show();
+                $("#book-flight, #flight-status").hide();
+            });
+            $("#btn-flight-status").click(function() {
+                $(".column .active").removeClass("active");
+                $("#btn-flight-status").addClass("active");
+                $("#flight-status").show();
+                $("#book-flight, #manage-booking").hide();
+            });
         });
     </script>
 @endsection
@@ -27,19 +55,27 @@
         </div>
         <div class="column action-window">
             <section class="columns action-heading">
-                <div class="column active">
+                <div class="column active" id="btn-book-flight">
                     <h1>Book a Flight</h1>
                 </div>
-                <div class="column">
+                <div class="column" id="btn-manage-booking">
                     <h1>Manage Booking</h1>
                 </div>
-                <div class="column">
+                <div class="column" id="btn-flight-status">
                     <h1>View Flight Status</h1>
                 </div>
             </section>
             <section id="book-flight">
                 <h1>Create Your Trip:</h1>
+                @if ($errors->any())
+                    <ul class="errors">
+                        @foreach ($errors->all() as $error)
+                            <li class="error">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endif
                 <form action="{{ url('/find_flights') }}" method="post">
+                    {!! csrf_field() !!}
                     <div class="field is-horizontal">
                         <label class="label field-label" for="fromICAO">From:</label>
                         <div class="control field-body">
@@ -76,16 +112,38 @@
                             <input type="text" class="input datepick dateReturning" name="dateReturning">
                         </div>
                     </div>
+                    <div class="columns field">
+                        <div class="column control">
+                            <label class="label" for="numPassengers">Passengers:</label>
+                            <select class="select" name="numPassengers">
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                            </select>
+                        </div>
+                        <div class="column control">
+                            <label class="label" for="preferredClass">Preferred Class:</label>
+                            <select class="select" name="preferredClass">
+                                <option selected>Economy</option>
+                                <option>First</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="control">
                         <button type="submit" class="button is-info">Search</button>
                     </div>
                 </form>
             </section>
             <section id="manage-booking">
-
+                <h1>Manage Your Trip:</h1>
             </section>
             <section id="flight-status">
-
+                <h1>Check Flight Status:</h1>
             </section>
         </div>
     </section>
@@ -96,7 +154,7 @@
                     <img src="{{ asset('images/laptop_airplane.jpg') }}" alt="Laptop on Airplane" />
                 </div>
                 <div class="column is-two-thirds">
-                    <h1><strong>Get Connected</strong></h1>
+                    <h1><strong>Stay Connected</strong></h1>
                     <p>Most flights in our network now have in-flight Wifi.</p>
                     <a href="#">More Info</a>
                 </div>

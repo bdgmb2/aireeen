@@ -1,0 +1,21 @@
+.action-window { background-color: #FFFFFF; border-radius: 10px; margin-top: 10px; margin-bottom: 10px; }
+.action-window h1 { text-align: center; margin-bottom: 15px; }
+.action-window .action-heading h1 { font-size: 1rem; text-align: center; margin-bottom: 0; }
+.action-heading { border-bottom: 1px gray solid; }
+.action-heading .active { background-color: #AAAAAA; }
+.action-heading .active:first-child { border-radius: 10px 0 0 0; }
+.action-heading .active:last-child { border-radius: 0 10px 0 0; }
+
+#book-flight button { display: block; margin: 0 auto; width: 35%; }
+.control { align-items: center; text-align: center; }
+.field-label { padding-bottom: 5px; font-size: 1rem; }
+.label:not(:last-child) { margin-bottom: 0; }
+input[type=radio] { margin-right: 5px; }
+
+.errors { list-style: initial; width: 85%; margin: 0 auto; }
+.error { font-size: 0.7em; font-weight: bold; color: red; }
+
+.column.box { margin: 20px; }
+.column.box h1 { font-size: 1rem; }
+.column.box p { font-size: 0.9rem; }
+.column.box a { font-size: 0.8rem; }

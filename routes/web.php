@@ -27,3 +27,5 @@ Route::get('/about/destinations', function() {
             ->get(),
         'airports' => App\Airport::all()]);
 });
+
+Route::post('/find_flights', 'searchFlights@find');

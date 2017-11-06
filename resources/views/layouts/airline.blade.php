@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <title>Air EEEN - @yield('title')</title>
         <link rel="stylesheet" href="{{ asset('css/airline.css') }}" />
+        @yield('css')
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Lato" rel="stylesheet">
         <script type="text/javascript" src="{{ asset('js/airline.js') }}"></script>
     </head>

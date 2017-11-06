@@ -88,7 +88,7 @@
 @section('main-content')
     <section class="container">
         <h1>Where We Fly</h1>
-        <p>Air EEEN has over 80 destinations throughout the United States and over 1,000 flights per day. Click on an airport or a route below to learn more.x</p>
+        <p>Air EEEN has over 80 destinations throughout the United States and over 1,000 flights per day. Click on an airport or a route below to learn more.</p>
     </section>
 
     <div id="legend" style="background-color: white; margin-bottom: 25px; margin-left: 10px; padding: 5px;">
