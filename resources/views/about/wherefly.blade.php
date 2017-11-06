@@ -82,7 +82,7 @@
 
 
     </script>
-    <script type="text/javascript" async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOBxtbwubPHOTU_62AQXUmKljXcZkoWK8&callback=initMap"></script>
+    <script type="text/javascript" async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_KEY') }}&callback=initMap"></script>
 @endsection
 
 @section('main-content')
