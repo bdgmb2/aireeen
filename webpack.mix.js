@@ -16,6 +16,7 @@ mix.styles([
     'resources/assets/css/pagesources/bulma.css',
     'resources/assets/css/pagesources/chosen.min.css',
     'resources/assets/css/pagesources/datepicker.min.css',
+    'resources/assets/css/pagesources/famfamfam-flags.css',
     'resources/assets/css/base.css'
 ], 'public/css/airline.css');
 
@@ -28,5 +29,6 @@ mix.copyDirectory('resources/assets/css/pages', 'public/css');
 mix.scripts([
     'resources/assets/js/jquery-3.2.1.min.js',
     'resources/assets/js/chosen.jquery.min.js',
-    'resources/assets/js/datepicker.min.js'
+    'resources/assets/js/datepicker.min.js',
+    'resources/assets/js/site.js'
 ], 'public/js/airline.js');

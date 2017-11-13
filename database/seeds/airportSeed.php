@@ -21,6 +21,7 @@ class airportSeed extends Seeder
                'timezone' => 'America/Chicago',
                'latitude' => 32.4113,
                'longitude' => -99.6819,
+               'altitude' => 1791,
                'activity' => 1
             ],
             [
@@ -31,6 +32,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Denver',
                 'latitude' => 35.0401,
                 'longitude' => -106.6090,
+                'altitude' => 5355,
                 'activity' => 2
             ],
             [
@@ -41,6 +43,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 30.1944,
                 'longitude' => -97.6698,
+                'altitude' => 542,
                 'activity' => 2
             ],
             [
@@ -51,6 +54,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Anchorage',
                 'latitude' => 64.8151,
                 'longitude' => -147.8560,
+                'altitude' => 439,
                 'activity' => 1
             ],
             [
@@ -61,6 +65,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Anchorage',
                 'latitude' => 61.1744,
                 'longitude' => -149.9960,
+                'altitude' => 152,
                 'activity' => 3
             ],
             [
@@ -71,6 +76,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Anchorage',
                 'latitude' => 57.75,
                 'longitude' => -152.4940,
+                'altitude' => 78,
                 'activity' => 1
             ],
             [
@@ -81,6 +87,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 33.6366,
                 'longitude' => -84.4281,
+                'altitude' => 1026,
                 'activity' => 3
             ],
             [
@@ -91,6 +98,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 46.7727,
                 'longitude' => -100.7460,
+                'altitude' => 1661,
                 'activity' => 1
             ],
             [
@@ -101,6 +109,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 41.9388,
                 'longitude' => -72.6831,
+                'altitude' => 173,
                 'activity' => 2
             ],
             [
@@ -111,6 +120,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Denver',
                 'latitude' => 45.8077,
                 'longitude' => -108.5429,
+                'altitude' => 3652,
                 'activity' => 2
             ],
             [
@@ -121,6 +131,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Denver',
                 'latitude' => 43.5643,
                 'longitude' => -116.2229,
+                'altitude' => 2871,
                 'activity' => 1
             ],
             [
@@ -131,6 +142,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 42.3642,
                 'longitude' => -71.0052,
+                'altitude' => 20,
                 'activity' => 3
             ],
             [
@@ -141,6 +153,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 33.5629,
                 'longitude' => -86.7535,
+                'altitude' => 650,
                 'activity' => 1
             ],
             [
@@ -151,6 +164,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 36.1245,
                 'longitude' => -86.6781,
+                'altitude' => 599,
                 'activity' => 2
             ],
             [
@@ -161,6 +175,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 25.9067,
                 'longitude' => -97.4259,
+                'altitude' => 22,
                 'activity' => 1
             ],
             [
@@ -171,6 +186,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Denver',
                 'latitude' => 45.9547,
                 'longitude' => -112.4970,
+                'altitude' => 5550,
                 'activity' => 1
             ],
             [
@@ -181,6 +197,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 44.4719,
                 'longitude' => -73.1532,
+                'altitude' => 335,
                 'activity' => 1
             ],
             [
@@ -191,6 +208,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 42.9404,
                 'longitude' => -78.7322,
+                'altitude' => 728,
                 'activity' => 2
             ],
             [
@@ -201,6 +219,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 32.8986,
                 'longitude' => -80.0404,
+                'altitude' => 46,
                 'activity' => 1
             ],
             [
@@ -211,6 +230,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 41.4117,
                 'longitude' => -81.8498,
+                'altitude' => 791,
                 'activity' => 2
             ],
             [
@@ -221,6 +241,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 35.2140,
                 'longitude' => -80.9430,
+                'altitude' => 748,
                 'activity' => 4
             ],
             [
@@ -231,6 +252,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 39.9980,
                 'longitude' => -82.8918,
+                'altitude' => 815,
                 'activity' => 1
             ],
             [
@@ -241,6 +263,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Denver',
                 'latitude' => 38.8058,
                 'longitude' => -104.7009,
+                'altitude' => 6187,
                 'activity' => 1
             ],
             [
@@ -251,6 +274,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 39.0488,
                 'longitude' => -84.6678,
+                'altitude' => 896,
                 'activity' => 1
             ],
             [
@@ -261,6 +285,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Denver',
                 'latitude' => 41.1557,
                 'longitude' => -104.8119,
+                'altitude' => 6159,
                 'activity' => 1
             ],
             [
@@ -271,6 +296,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 32.8470,
                 'longitude' => -96.8517,
+                'altitude' => 487,
                 'activity' => 1
             ],
             [
@@ -281,6 +307,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Denver',
                 'latitude' => 39.8616,
                 'longitude' => -104.6729,
+                'altitude' => 5431,
                 'activity' => 3
             ],
             [
@@ -291,6 +318,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 32.8968,
                 'longitude' => -97.0380,
+                'altitude' => 607,
                 'activity' => 3
             ],
             [
@@ -301,6 +329,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 46.8420,
                 'longitude' => -92.1936,
+                'altitude' => 1428,
                 'activity' => 1
             ],
             [
@@ -311,6 +340,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 41.5340,
                 'longitude' => -93.6631,
+                'altitude' => 958,
                 'activity' => 2
             ],
             [
@@ -321,6 +351,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 42.2123,
                 'longitude' => -83.3534,
+                'altitude' => 645,
                 'activity' => 2
             ],
             [
@@ -331,6 +362,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Denver',
                 'latitude' => 31.8071,
                 'longitude' => -106.3779,
+                'altitude' => 3959,
                 'activity' => 2
             ],
             [
@@ -341,6 +373,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 46.9207,
                 'longitude' => -96.8158,
+                'altitude' => 902,
                 'activity' => 2
             ],
             [
@@ -351,6 +384,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 43.5820,
                 'longitude' => -96.7418,
+                'altitude' => 1429,
                 'activity' => 1
             ],
             [
@@ -361,6 +395,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Anchorage',
                 'latitude' => 66.571,
                 'longitude' => -145.25,
+                'altitude' => 433,
                 'activity' => 1
             ],
             [
@@ -371,6 +406,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Los_Angeles',
                 'latitude' => 47.6198,
                 'longitude' => -117.5339,
+                'altitude' => 2376,
                 'activity' => 1
             ],
             [
@@ -381,6 +417,7 @@ class airportSeed extends Seeder
                 'timezone' => 'Pacific/Honolulu',
                 'latitude' => 21.3187,
                 'longitude' => -157.9219,
+                'altitude' => 13,
                 'activity' => 3
             ],
             [
@@ -391,6 +428,7 @@ class airportSeed extends Seeder
                 'timezone' => 'Pacific/Honolulu',
                 'latitude' => 20.8985,
                 'longitude' => -156.4299,
+                'altitude' => 54,
                 'activity' => 1
             ],
             [
@@ -401,6 +439,7 @@ class airportSeed extends Seeder
                 'timezone' => 'Pacific/Honolulu',
                 'latitude' => 19.7213,
                 'longitude' => -155.0480,
+                'altitude' => 38,
                 'activity' => 2
             ],
             [
@@ -411,6 +450,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 38.9444,
                 'longitude' => -77.4558,
+                'altitude' => 312,
                 'activity' => 3
             ],
             [
@@ -421,6 +461,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 29.9843,
                 'longitude' => -95.3414,
+                'altitude' => 97,
                 'activity' => 4
             ],
             [
@@ -431,6 +472,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 37.6498,
                 'longitude' => -97.4330,
+                'altitude' => 1333,
                 'activity' => 1
             ],
             [
@@ -441,6 +483,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 39.7173,
                 'longitude' => -86.2944,
+                'altitude' => 797,
                 'activity' => 2
             ],
             [
@@ -451,7 +494,19 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Denver',
                 'latitude' => 43.6072,
                 'longitude' => -110.7379,
+                'altitude' => 6451,
                 'activity' => 2
+            ],
+            [
+                'icao' => 'PJNU',
+                'name' => 'Juneau International Airport',
+                'city' => 'Juneau',
+                'state' => 'AK',
+                'timezone' => 'America/Anchorage',
+                'latitude' => 58.3549,
+                'longitude' => -134.5760,
+                'altitude' => 21,
+                'activity' => 1
             ],
             [
                 'icao' => 'TJSJ',
@@ -461,6 +516,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Puerto_Rico',
                 'latitude' => 18.4393,
                 'longitude' => -66.0018,
+                'altitude' => 9,
                 'activity' => 2
             ],
             [
@@ -471,6 +527,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 42.7787,
                 'longitude' => -84.5874,
+                'altitude' => 861,
                 'activity' => 1
             ],
             [
@@ -481,6 +538,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Denver',
                 'latitude' => 36.0801,
                 'longitude' => -115.1520,
+                'altitude' => 2181,
                 'activity' => 3
             ],
             [
@@ -491,6 +549,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Los_Angeles',
                 'latitude' => 33.9425,
                 'longitude' => -118.4079,
+                'altitude' => 125,
                 'activity' => 3
             ],
             [
@@ -501,6 +560,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 33.6636,
                 'longitude' => -101.8229,
+                'altitude' => 3282,
                 'activity' => 1
             ],
             [
@@ -511,6 +571,7 @@ class airportSeed extends Seeder
                 'timezone' => 'Pacific/Honolulu',
                 'latitude' => 21.9759,
                 'longitude' => -159.3390,
+                'altitude' => 153,
                 'activity' => 1
             ],
             [
@@ -521,6 +582,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 34.7294,
                 'longitude' => -92.2242,
+                'altitude' => 262,
                 'activity' => 1
             ],
             [
@@ -531,6 +593,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 39.2976,
                 'longitude' => -94.7138,
+                'altitude' => 1026,
                 'activity' => 2
             ],
             [
@@ -541,6 +604,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 41.7859,
                 'longitude' => -87.7524,
+                'altitude' => 620,
                 'activity' => 3
             ],
             [
@@ -551,6 +615,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Los_Angeles',
                 'latitude' => 42.3741,
                 'longitude' => -122.8730,
+                'altitude' => 1335,
                 'activity' => 1
             ],
             [
@@ -561,6 +626,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 25.7931,
                 'longitude' => -80.2906,
+                'altitude' => 8,
                 'activity' => 3
             ],
             [
@@ -571,6 +637,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Denver',
                 'latitude' => 46.9163,
                 'longitude' => -114.0910,
+                'altitude' => 3206,
                 'activity' => 1
             ],
             [
@@ -581,6 +648,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 29.9934,
                 'longitude' => -90.2580,
+                'altitude' => 4,
                 'activity' => 2
             ],
             [
@@ -591,6 +659,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 44.8819,
                 'longitude' => -93.2218,
+                'altitude' => 841,
                 'activity' => 4
             ],
             [
@@ -601,6 +670,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 43.1104,
                 'longitude' => -88.0344,
+                'altitude' => 745,
                 'activity' => 1
             ],
             [
@@ -611,6 +681,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 35.3931,
                 'longitude' => -97.6007,
+                'altitude' => 1295,
                 'activity' => 2
             ],
             [
@@ -621,6 +692,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 41.3031,
                 'longitude' => -95.8940,
+                'altitude' => 984,
                 'activity' => 2
             ],
             [
@@ -631,6 +703,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 36.8945,
                 'longitude' => -76.2012,
+                'altitude' => 26,
                 'activity' => 1
             ],
             [
@@ -641,6 +714,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Los_Angeles',
                 'latitude' => 45.5886,
                 'longitude' => -122.5979,
+                'altitude' => 31,
                 'activity' => 2
             ],
             [
@@ -651,6 +725,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 39.8718,
                 'longitude' => -75.2410,
+                'altitude' => 36,
                 'activity' => 3
             ],
             [
@@ -661,6 +736,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 44.3827,
                 'longitude' => -100.2860,
+                'altitude' => 1744,
                 'activity' => 1
             ],
             [
@@ -671,6 +747,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 40.4915,
                 'longitude' => -80.2329,
+                'altitude' => 1203,
                 'activity' => 2
             ],
             [
@@ -681,6 +758,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Phoenix',
                 'latitude' => 33.4342,
                 'longitude' => -112.0120,
+                'altitude' => 1135,
                 'activity' => 3
             ],
             [
@@ -691,6 +769,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 43.6461,
                 'longitude' => -70.3093,
+                'altitude' => 76,
                 'activity' => 1
             ],
             [
@@ -701,6 +780,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Los_Angeles',
                 'latitude' => 37.7212,
                 'longitude' => -122.2210,
+                'altitude' => 9,
                 'activity' => 2
             ],
             [
@@ -711,6 +791,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Denver',
                 'latitude' => 44.0452,
                 'longitude' => -103.0569,
+                'altitude' => 3204,
                 'activity' => 1
             ],
             [
@@ -721,6 +802,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 35.8776,
                 'longitude' => -78.7874,
+                'altitude' => 435,
                 'activity' => 1
             ],
             [
@@ -731,6 +813,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 37.5051,
                 'longitude' => -77.3197,
+                'altitude' => 167,
                 'activity' => 2
             ],
             [
@@ -741,6 +824,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Los_Angeles',
                 'latitude' => 39.4990,
                 'longitude' => -119.7679,
+                'altitude' => 4415,
                 'activity' => 1
             ],
             [
@@ -751,6 +835,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Denver',
                 'latitude' => 35.6170,
                 'longitude' => -106.0889,
+                'altitude' => 6348,
                 'activity' => 1
             ],
             [
@@ -761,6 +846,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Los_Angeles',
                 'latitude' => 32.7336,
                 'longitude' => -117.1900,
+                'altitude' => 17,
                 'activity' => 2
             ],
             [
@@ -771,6 +857,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 29.5337,
                 'longitude' => -98.4698,
+                'altitude' => 809,
                 'activity' => 3
             ],
             [
@@ -781,6 +868,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 32.1276,
                 'longitude' => -81.2021,
+                'altitude' => 50,
                 'activity' => 1
             ],
             [
@@ -791,6 +879,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 38.1744,
                 'longitude' => -85.736,
+                'altitude' => 501,
                 'activity' => 2
             ],
             [
@@ -801,6 +890,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Los_Angeles',
                 'latitude' => 47.4490,
                 'longitude' => -122.3089,
+                'altitude' => 433,
                 'activity' => 3
             ],
             [
@@ -811,6 +901,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Los_Angeles',
                 'latitude' => 37.6189,
                 'longitude' => -122.375,
+                'altitude' => 13,
                 'activity' => 2
             ],
             [
@@ -821,6 +912,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Denver',
                 'latitude' => 40.7883,
                 'longitude' => -111.9779,
+                'altitude' => 4227,
                 'activity' => 4
             ],
             [
@@ -831,6 +923,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Los_Angeles',
                 'latitude' => 38.6954,
                 'longitude' => -121.5910,
+                'altitude' => 27,
                 'activity' => 2
             ],
             [
@@ -841,6 +934,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Chicago',
                 'latitude' => 38.7486,
                 'longitude' => -90.3700,
+                'altitude' => 618,
                 'activity' => 2
             ],
             [
@@ -851,6 +945,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 41.5041,
                 'longitude' => -74.1047,
+                'altitude' => 491,
                 'activity' => 4
             ],
             [
@@ -861,6 +956,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 43.1111,
                 'longitude' => -76.1063,
+                'altitude' => 421,
                 'activity' => 1
             ],
             [
@@ -871,6 +967,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 30.3964,
                 'longitude' => -84.3503,
+                'altitude' => 81,
                 'activity' => 1
             ],
             [
@@ -881,6 +978,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/New_York',
                 'latitude' => 27.9755,
                 'longitude' => -82.5332,
+                'altitude' => 26,
                 'activity' => 2
             ],
             [
@@ -891,6 +989,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Phoenix',
                 'latitude' => 32.1161,
                 'longitude' => -110.9410,
+                'altitude' => 2643,
                 'activity' => 1
             ],
             [
@@ -901,6 +1000,7 @@ class airportSeed extends Seeder
                 'timezone' => 'America/Denver',
                 'latitude' => 42.4818,
                 'longitude' => -114.4879,
+                'altitude' => 4154,
                 'activity' => 1
             ]
         ]);

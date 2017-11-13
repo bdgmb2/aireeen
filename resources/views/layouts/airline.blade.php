@@ -14,12 +14,28 @@
             <div class="column is-two-thirds">
                 <nav class="navbar" role="navigation">
                     <div class="navbar-brand">
-                        <a class="navbar-item" href="{{ url('/') }}"><img src="{{ asset('images/eeenwhite.png') }}" alt="Air EEEN Logo" /></a>
+                        <a class="navbar-item" href="{{ route('home') }}"><img src="{{ asset('images/eeenwhite.png') }}" alt="Air EEEN Logo" /></a>
                     </div>
                     <div class="navbar-menu navbar-end">
-                        <a class="navbar-item" href="{{ url('about') }}">About</a>
-                        <a class="navbar-item" href="#">Travel Information</a>
-                        <a class="navbar-item" href="#">EEEN Club</a>
+                        <a class="navbar-item" href="{{ route('about') }}">About</a>
+                        <a class="navbar-item" href="{{ route('about.travelinfo') }}">Travel Information</a>
+                        @isset ($account)
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link" href="{{ route('eeenclub.home') }}"><img src="{{ asset('images/eeenclub-white.png') }}" alt="EEEN Club"><i class="down-arrow"></i></a>
+                                <div class="navbar-dropdown">
+                                    <div class="eeenclub-status">
+                                        <p><strong>{{ $passenger->firstName }} {{ $passenger->lastName }}</strong></p>
+                                        <p><strong>{{ number_format($account->miles) }}</strong> EEENPoints</p>
+                                        @if ($account->status != 0)
+                                            <p>Status: {{ App\Account::$statusEnum[$account->status] }}</p>
+                                        @endif
+                                        <a class="button is-info" id="logout" href="{{ route('eeenclub.logout') }}">Logout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @else
+                            <a class="navbar-item" href="{{ route('eeenclub.home') }}"><img src="{{ asset('images/eeenclub-white.png') }}" alt="EEEN Club"></a>
+                        @endif
                     </div>
                 </nav>
             </div>
@@ -57,8 +73,8 @@
                     <h1>About Air EEEN</h1>
                     <div class="separator"></div>
                     <ul>
-                        <li><a href="{{ url('about') }}">The Project</a></li>
-                        <li><a href="{{ url('about/destinations') }}">Where we fly</a></li>
+                        <li><a href="{{ route('about') }}">The Project</a></li>
+                        <li><a href="{{ route('about.destinations') }}">Where we fly</a></li>
                         <li>Careers</li>
                         <li>Gift Cards</li>
                         <li>Development Information</li>

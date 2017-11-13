@@ -1,5 +1,9 @@
 @extends('layouts.airline')
-@section('title', 'Home')
+@section('title', 'Where We Fly')
+
+@section('css')
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/about.css') }}">
+@endsection
 
 @section('scripts')
     <script type="text/javascript">
@@ -35,12 +39,6 @@
                             else return (flightPaths[i].fromActivity + flightPaths[i].toActivity) / 2;
                         }()
                     });
-                    var windowContent = "Flight from " + flightPaths[i].from + " to " + flightPaths[i].to;
-                    var infoWindow = new google.maps.InfoWindow({content: windowContent});
-                    line.addListener('click', function(event) {
-                        infoWindow.setPosition(event.latLng);
-                        infoWindow.open(map);
-                    }, false);
                     line.setMap(map);
                 })();
             }
@@ -65,12 +63,12 @@
         }
 
         function setLegend() {
-            var legend = document.getElementById('legend');
+            var legend = document.getElementById('wherefly-legend');
             map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
         }
 
         function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
+            map = new google.maps.Map(document.getElementById('wherefly-map'), {
                 zoom: 3,
                 center: { lat: 41.879, lng: -87.624 }
             });
@@ -86,21 +84,23 @@
 @endsection
 
 @section('main-content')
-    <section class="container">
+    <section class="description">
         <h1>Where We Fly</h1>
         <p>Air EEEN has over 80 destinations throughout the United States and over 1,000 flights per day. Click on an airport or a route below to learn more.</p>
     </section>
 
-    <div id="legend" style="background-color: white; margin-bottom: 25px; margin-left: 10px; padding: 5px;">
-        <h1 style="text-align: center"><strong>Legend</strong></h1>
-        <div>
-            <div style="display: inline-block; height: 10px; width: 20px; background-color: #2E6DA4;"></div>
-            <span>Air EEEN</span>
+    <section class="content">
+        <div id="wherefly-legend" style="background-color: white; margin-bottom: 25px; margin-left: 10px; padding: 5px;">
+            <h1 style="text-align: center"><strong>Legend</strong></h1>
+            <div>
+                <div style="display: inline-block; height: 10px; width: 20px; background-color: #2E6DA4;"></div>
+                <span>Air EEEN</span>
+            </div>
+            <div>
+                <div style="display: inline-block; height: 10px; width: 20px; background-color: #A90705;"></div>
+                <span>Air EEEN Connect</span>
+            </div>
         </div>
-        <div>
-            <div style="display: inline-block; height: 10px; width: 20px; background-color: #A90705;"></div>
-            <span>Air EEEN Connect</span>
-        </div>
-    </div>
-    <div id="map" style="height: 80vh;"></div>
+        <div id="wherefly-map" style="height: 80vh;"></div>
+    </section>
 @endsection

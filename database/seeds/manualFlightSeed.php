@@ -171,6 +171,7 @@ class manualFlightSeed extends Seeder
             ['first' => App\Airport::find('PANC'), 'second' => App\Airport::find('PAFA'), 'frequency' => 5],
             ['first' => App\Airport::find('PANC'), 'second' => App\Airport::find('PFYU'), 'frequency' => 2],
             ['first' => App\Airport::find('PANC'), 'second' => App\Airport::find('PADQ'), 'frequency' => 2],
+            ['first' => App\Airport::find('PANC'), 'second' => App\Airport::find('PJNU'), 'frequency' => 3],
 
             // EAST COAST AIRPORTS
 
@@ -195,19 +196,6 @@ class manualFlightSeed extends Seeder
             ['first' => App\Airport::find('KMIA'), 'second' => App\Airport::find('KTPA'), 'frequency' => 3],
             ['first' => App\Airport::find('KMIA'), 'second' => App\Airport::find('KTLH'), 'frequency' => 2],
         );
-    }
-
-    static protected function getDistance(float $latA, float $lonA, float $latB, float $lonB) {
-        $radLatA = (3.14159 * $latA) / 180;
-        $radLatB = (3.14159 * $latB) / 180;
-        $radLonA = (3.14159 * $lonA) / 180;
-        $radLonB = (3.14159 * $lonB) / 180;
-        $radius = 3956;
-        $longitudeDiff = $radLonB - $radLonA;
-        $latitudeDiff = $radLatB - $radLatA;
-        $a = pow(sin($latitudeDiff / 2), 2) + cos($radLatA) * cos($radLatB) * pow(sin($longitudeDiff / 2), 2);
-        $c = 2 * asin(min(1, sqrt($a)));
-        return $radius * $c;
     }
 
     static protected function calculateFirstPrice(int $distance) {
@@ -258,7 +246,7 @@ class manualFlightSeed extends Seeder
     {
         $start = new DateTime();
         $start->setTime(0, 0);
-        $start->modify('+1 day');
+        $start->modify('-1 day');
         $end = clone $start;
         $end->modify('+10 day');
 
@@ -268,7 +256,7 @@ class manualFlightSeed extends Seeder
             $counter = 0;
             $flightNumberIncrement = 350;
             foreach (self::$flightRoutes as $route) {
-                $distance = self::getDistance($route['first']->latitude, $route['first']->longitude, $route['second']->latitude, $route['second']->longitude);
+                $distance = App\Airport::getDistance($route['first'], $route['second']);
                 for ($k = 1; $k <= $route['frequency']; $k++) {
 
                     // Going from First to Second
@@ -276,7 +264,8 @@ class manualFlightSeed extends Seeder
                     $counter++;
                     //$this->command->info("Doing " . $route['first']->icao . " -> " . $route['second']->icao);
                     $aircraft = $this->generateAircraft($route['first']->activity, $route['second']->activity, $distance, $aircraftList);
-                    $departureTime = (clone $i)->setTime(rand(4, 22), rand(0, 59))->setTimezone(new DateTimeZone($route['first']->timezone));
+                    $departureTime = (clone $i)->setTimezone(new DateTimeZone($route['first']->timezone))->setTime(rand(4, 22), rand(0, 59));
+                    //$departureTime = new DateTime(, new DateTimeZone($route['first']->timezone));
                     $arrivalTime = self::calculateArrivalTime($departureTime, $distance, $aircraft->speed, $route['second']->timezone);
                     $toadd = new App\Flight([
                         'flightNumber' => $flightNumberIncrement,

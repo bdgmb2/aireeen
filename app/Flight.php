@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class Flight extends Model
 {
@@ -13,5 +14,15 @@ class Flight extends Model
 
     public function sourceAirport() { return $this->belongsTo('App\Airport', 'sourceAirport', 'icao'); }
     public function destinationAirport() { return $this->belongsTo('App\Airport', 'destinationAirport', 'icao'); }
-    public function aircraftModel() { return $this->hasOne('App\Aircraft', 'aircraftModel', 'model'); }
+    public function aircraftModel() { return $this->belongsTo('App\Aircraft', 'aircraftModel', 'model'); }
+
+    public function getDepartureTimeAttribute($value)
+    {
+        return new \DateTime($value, new \DateTimeZone($this->sourceAirport()->first()->timezone));
+    }
+
+    public function getArrivalTimeAttribute($value)
+    {
+        return new \DateTime($value, new \DateTimeZone($this->destinationAirport()->first()->timezone));
+    }
 }

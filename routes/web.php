@@ -11,21 +11,28 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home', ['airports' => App\Airport::all()]);
-});
+// TOPLEVEL
+Route::get('/', 'mainPage@homepage')->name('home');
 
-Route::get('/about', function() {
-    return view('about.about');
-});
+// ABOUT PAGES
+Route::get('/about', 'aboutPages@mainAbout')->name('about');
+Route::get('/about/travelinfo', 'aboutPages@travelInfo')->name('about.travelinfo');
+Route::get('/about/destinations', 'aboutPages@destinations')->name('about.destinations');
 
-Route::get('/about/destinations', function() {
-    return view('about.wherefly', [
-        'flightPaths' => App\Flight::where('departureTime', '<=', date_modify((new DateTime())->setTime(0, 0, 0), '+2 day'))
-            ->select('sourceAirport', 'destinationAirport')
-            ->distinct()
-            ->get(),
-        'airports' => App\Airport::all()]);
-});
+// FLIGHT PUCHASING
+Route::post('/find_flights', 'bookFlight@find')->name('flights.search');
+Route::post('/find_flights/progress', 'bookFlight@progress')->name('flights.prog');
 
-Route::post('/find_flights', 'searchFlights@find');
+// MANAGE FLIGHT BOOKING
+
+// CHECK FLIGHT STATUS
+Route::post('/check_status', 'bookFlight@active')->name('status');
+
+// EEEN CLUB
+Route::get('/eeen_club', 'eeenClub@accountPage')->name('eeenclub.home')->middleware('eeenClubAuth');
+Route::get('/eeen_club/login', function() { return view('eeenclub.login'); })->name('eeenclub.loginpage');
+Route::get('/eeen_club/register', function() { return view('eeenclub.register'); })->name('eeenclub.registerpage');
+
+Route::post('/eeen_club/authenticate', 'eeenClub@login')->name('eeenclub.login');
+Route::get('/eeen_club/logout', 'eeenClub@logout')->name('eeenclub.logout')->middleware('eeenClubAuth');
+Route::post('/eeen_club/doRegister', 'eeenClub@register')->name('eeenclub.register');

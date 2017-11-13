@@ -1,5 +1,9 @@
 @extends('layouts.airline')
-@section('title', 'Home')
+@section('title', 'About Us')
+
+@section('css')
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/about.css') }}">
+@endsection
 
 @section('scripts')
 

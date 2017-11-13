@@ -14,33 +14,44 @@ class CreateAllTables extends Migration
     public function up()
     {
         $aircraftModelLength = 10;
-        $icaoLength = 5;
+        $icaoLength = 4;
 
         Schema::create('passengers', function(Blueprint $table) {
             $table->bigIncrements('id');
+            $table->enum('title', App\Passenger::$surnameValues)->nullable();
             $table->string('firstName');
             $table->string('lastName');
+            $table->enum('suffix', App\Passenger::$suffixValues)->nullable();
+            $table->char('gender', 1);
             $table->date('dateOfBirth');
-            $table->date('customerSince');
+            $table->date('customerSince')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('email');
+            $table->char('phoneCountry', 3)->nullable();
             $table->string('phone', 20)->nullable();
         });
+        DB::statement("ALTER TABLE passengers ADD CHECK (gender = 'm' || gender = 'f');");
+
         Schema::create('passenger_accounts', function(Blueprint $table) {
             $table->unsignedBigInteger('passenger');
             $table->foreign('passenger')->references('id')->on('passengers')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('loginUsername');
+            $table->string('loginUsername')->index();
             $table->string('loginPassword');
-            $table->enum('status', ['none', 'silver', 'gold', 'platinum'])->default('none');
+            $table->boolean('confirmedEmail')->default(false);
+            $table->integer('status')->default(0);
             $table->unsignedInteger('miles')->default(0);
+            $table->unsignedInteger('accumulatedMiles')->default(0);
         });
+        DB::statement("ALTER TABLE passenger_accounts ADD CHECK (status < " . count(App\Account::$statusEnum) . ");");
+
         Schema::create('airports', function(Blueprint $table) use ($icaoLength) {
-            $table->string('icao', $icaoLength);
+            $table->char('icao', $icaoLength);
             $table->primary('icao');
             $table->string('name');
             $table->string('city');
-            $table->string('state');
+            $table->string('state', 20);
             $table->float('latitude');
             $table->float('longitude');
+            $table->unsignedInteger('altitude');
             $table->string('timezone');
             $table->unsignedInteger('activity');
         });
@@ -65,6 +76,7 @@ class CreateAllTables extends Migration
             $table->foreign('destinationAirport')->references('icao')->on('airports');
             $table->dateTime('departureTime');
             $table->dateTime('arrivalTime');
+            $table->index(['departureTime', 'arrivalTime']);
             $table->string('aircraftModel', $aircraftModelLength);
             $table->foreign('aircraftModel')->references('model')->on('aircraft');
             $table->unsignedInteger('miles');
