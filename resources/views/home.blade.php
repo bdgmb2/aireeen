@@ -23,12 +23,15 @@
                 endDate: endD,
                 autoHide: true
             });
-            $('input[type=radio]').change(function() {
-                if (this.value === 'oneway')
+
+            var radioInput = $('input[type=radio]');
+            radioInput.change(function() {
+                if ($('input[type=radio]:checked').val() === 'oneway')
                     $('.dateReturning').hide();
                 else
                     $('.dateReturning').show();
             });
+            radioInput.trigger("change");
 
             $("#manage-booking, #flight-status").hide();
 
@@ -112,8 +115,13 @@
                         </div>
                     </div>
                     <div class="control">
-                        <label class="radio"><input type="radio" name="tripType" value="roundtrip" checked>Round Trip</label>
-                        <label class="radio"><input type="radio" name="tripType" value="oneway">One Way</label>
+                        @if (old('tripType') == 'oneway')
+                            <label class="radio"><input type="radio" name="tripType" value="roundtrip">Round Trip</label>
+                            <label class="radio"><input type="radio" name="tripType" value="oneway" checked>One Way</label>
+                        @else
+                            <label class="radio"><input type="radio" name="tripType" value="roundtrip" checked>Round Trip</label>
+                            <label class="radio"><input type="radio" name="tripType" value="oneway">One Way</label>
+                        @endif
                     </div>
                     <div class="columns field">
                         <div class="column control dateDeparting">

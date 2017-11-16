@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Cache;
 use Validator;
 
 use App;
@@ -46,19 +46,71 @@ class bookFlight extends Controller
             return redirect()->route('home')->withErrors($validator->errors(), 'find_flights');
         else
         {
-            return view('book.loading', [
-                'source' => $request->input('fromICAO'),
-                'destination' => $request->input('toICAO'),
-                'type' => $request->input('tripType'),
-                'departDate' => $request->input('dateDeparting'),
-                'returnDate' => $request->input('dateReturning')
-            ]);
+            $newRequest = new App\FlightRequest();
+            $newRequest->source = App\Airport::find($request->input('fromICAO'));
+            $newRequest->destination = App\Airport::find($request->input('toICAO'));
+            $newRequest->tripType = $request->input('tripType');
+            $newRequest->departDate = $request->input('dateDeparting');
+            $newRequest->returnDate = $request->input('dateReturning');
+            $newRequest->numTickets = $request->input('numPassengers');
+            $newRequest->generateToken();
+
+            event(new \App\Events\FlightSearch($newRequest));
+
+            return view('book.loading', [ 'req' => $newRequest ]);
         }
     }
 
-    public function progress(Request $request)
+    public function progress(string $token)
     {
+        if ($token != null)
+        {
+            $getValue = Cache::get('flightsearch:' . $token);
+            if ($getValue == null)
+                return response('', 404);
+            else
+                return response('', 200);
+        }
+        return response('', 400);
+    }
 
+    public function results(string $token, string $sortBy = 'totalDuration', string $type = null)
+    {
+        if (Cache::has('flightsearch:' . $token))
+        {
+            //Reset expiration time
+            $fromCache = Cache::get('flightsearch:' . $token);
+            Cache::set('flightsearch:' . $token, $fromCache, \Carbon\Carbon::now()->addMinutes(env('FLIGHTSEARCH_CACHE_EXPIRY')));
+
+            if ($sortBy != null)
+            {
+                switch ($sortBy)
+                {
+                    case 'economyPrice':
+                        $fromCache['searchResults'] = $fromCache['searchResults']->sortBy(function ($item, $key) { return $item['totalEconomy']; });
+                        break;
+                    case 'firstPrice':
+                        $fromCache['searchResults'] = $fromCache['searchResults']->sortBy(function ($item, $key) { return $item['totalFirst']; });
+                        break;
+                    case 'departureTime':
+                        $fromCache['searchResults'] = $fromCache['searchResults']->sortBy(function ($item, $key) { return $item['flight'][0]->departureTime; });
+                        break;
+                    case 'arrivalTime':
+                        $fromCache['searchResults'] = $fromCache['searchResults']->sortBy(function ($item, $key) { return $item['flight'][$item['legs'] - 1]->arrivalTime; });
+                        break;
+                    case 'totalDuration':
+                        $fromCache['searchResults'] = $fromCache['searchResults']->sortBy(function ($item, $key) {
+                            return ($item['flight'][$item['legs'] - 1]->arrivalTime)->getTimestamp() - ($item['flight'][0]->departureTime)->getTimestamp();
+                        });
+                        break;
+                    default:
+                        abort(400, "sortBy value not valid.");
+                }
+            }
+
+            return view('book.results', ['token' => $token, 'results' => $fromCache, 'activeSort' => $sortBy]);
+        }
+        else return response('', 404);
     }
 
     public function active(Request $request)
@@ -120,7 +172,7 @@ class bookFlight extends Controller
         {
             $status = "In-Flight: Departed at: " . $flight->departureTime->format('h:i A T, F jS Y') . ", Will Arrive at: " . $flight->arrivalTime->format('h:i A T, F jS Y');
             $percentComplete = (($nowUTC->getTimestamp() - $clearDeparture->getTimestamp()) / ($clearArrival->getTimestamp() - $clearDeparture->getTimeStamp())) * 100;
-            $inter = $this->intermediate($departureAirport, $arrivalAirport, $percentComplete);
+            $inter = App\Flight::intermediate($departureAirport, $arrivalAirport, $percentComplete);
             $locationLatitude = $inter['latitude'];
             $locationLongitude = $inter['longitude'];
             $airspeed = round(-64*pow((($percentComplete / 100) - 0.5), 6) + 1) * $aircraftModel->speed;
@@ -158,41 +210,5 @@ class bookFlight extends Controller
             'arrivalAirport' => $arrivalAirport,
             'wifi' => $flight->wifi
         ]);
-    }
-
-    private function intermediate(App\Airport $first, App\Airport $second, float $percent)
-    {
-
-        $lat1 = ($first->latitude * 3.14159) / 180;
-        $lng1 = ($first->longitude * 3.14159) / 180;
-        $lat2 = ($second->latitude * 3.14159) / 180;
-        $lng2 = ($second->longitude * 3.14159) / 180;
-
-        $f = $percent / 100;
-
-        $d = App\Airport::getDistance($first, $second);
-
-        Log::info("Distance: " . $d);
-        Log::info("Lat: " . $first->latitude . " Lng: " . $first->longitude);
-        Log::info("Lat: " . $second->latitude . " Lng: " . $second->longitude);
-        Log::info("Percent complete: " . $percent);
-
-        $A = sin((1 - $f) * $d) / sin($d);
-        $B = sin($f * $d) / sin($d);
-        $x = ($A * cos($lat1) * cos($lng1)) + $B *
-                cos($lat2) * cos($lng2);
-        $y = ($A * cos($lat1) * sin($lng1)) + $B *
-                cos($lat2) * sin($lng2);
-        $z = ($A * sin($lat1)) + ($B * sin($lat2));
-        $latitude = atan2($z, sqrt(pow($x, 2) +
-            pow($y, 2)));
-        $longitude = atan2($y, $x);
-
-        $retLat = ($latitude * 180) / 3.14159;
-        $retLng = ($longitude * 180) / 3.14159;
-
-        Log::infO("Lat: " . $retLat . " Lng: " . $retLng);
-
-        return [ 'latitude' => $retLat, 'longitude' => $retLng ];
     }
 }

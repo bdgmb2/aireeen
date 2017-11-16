@@ -32,6 +32,8 @@ nav a { color: white; text-decoration: none; }
 
 .description { background-color: white; padding: 1em 0; }
 .description h1, .description p { font-family: 'Raleway', sans-serif; width: 90%; margin: 0 auto; }
+.description h1 { font-weight: bold; font-size: 1.5em; }
+.description p { font-size: 0.75em; }
 
 .separator { background-color: #FFFFFF; height: 1px; margin: 10px auto; width: 80%; }
 .separator-blue { background-color: #2e6da4; height: 1px; margin: 10px auto; width: 80%; }

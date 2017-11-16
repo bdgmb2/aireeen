@@ -20,8 +20,9 @@ Route::get('/about/travelinfo', 'aboutPages@travelInfo')->name('about.travelinfo
 Route::get('/about/destinations', 'aboutPages@destinations')->name('about.destinations');
 
 // FLIGHT PUCHASING
-Route::post('/find_flights', 'bookFlight@find')->name('flights.search');
-Route::post('/find_flights/progress', 'bookFlight@progress')->name('flights.prog');
+Route::post('/bookFlight', 'bookFlight@find')->name('flights.search');
+Route::get('/bookFlight/progress/{token}', 'bookFlight@progress')->name('flights.prog');
+Route::get('/bookFlight/searchResults/{token}/{sortBy?}/{type?}', 'bookFlight@results')->name('flights.pick');
 
 // MANAGE FLIGHT BOOKING
 

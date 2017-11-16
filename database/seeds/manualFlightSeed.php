@@ -201,13 +201,13 @@ class manualFlightSeed extends Seeder
     static protected function calculateFirstPrice(int $distance) {
         $base = 200;
         $gen = sqrt($distance) * 18;
-        return $base + $gen;
+        return $base + $gen + rand(-30, 30);
     }
 
     static protected function calculateEconomyPrice(int $distance) {
         $base = 50;
         $gen = sqrt($distance) * 9;
-        return $base + $gen;
+        return $base + $gen + rand(-70, 70);
     }
 
     static protected function calculateArrivalTime(DateTime $departureTime, int $distance, int $airspeed, string $timezone) {
@@ -298,7 +298,8 @@ class manualFlightSeed extends Seeder
                         'aircraftModel' => $aircraft->model,
                         'firstPrice' => self::calculateFirstPrice($distance),
                         'economyPrice' => self::calculateEconomyPrice($distance),
-                        'wifi' => rand(0, 1)
+                        'wifi' => rand(0, 1),
+                        'meals' => ($distance < 500 ? rand(0, 1) : min(rand(0, 6), 1))
                     ]);
                     $toadd->save();
                 }

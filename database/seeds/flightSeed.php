@@ -16,13 +16,13 @@ class flightSeed extends Seeder
     static protected function calculateFirstPrice(int $distance) {
         $base = 200;
         $gen = sqrt($distance) * 18;
-        return $base + $gen;
+        return $base + $gen + rand(-30, 30);
     }
 
     static protected function calculateEconomyPrice(int $distance) {
         $base = 50;
         $gen = sqrt($distance) * 9;
-        return $base + $gen;
+        return $base + $gen + rand(-70, 70);
     }
 
     static protected function calculateArrivalTime(DateTime $departureTime, int $distance, int $airspeed) {
@@ -103,7 +103,7 @@ class flightSeed extends Seeder
                 foreach ($flightsInto as $outgoing) {
                     $distance = self::getDistance($airport->latitude, $airport->longitude, $outgoing->latitude, $outgoing->longitude);
                     $aircraft = self::generateAircraft($airport->activity, $outgoing->activity, $distance, $potAircraft);
-                    $departureTime = $i->setTime(rand(4, 23), rand(0, 59));
+                    $departureTime = $i->setTime(rand($earliestHour, $latestHour), rand(0, 59));
                     $arrivalTime = self::calculateArrivalTime($departureTime, $distance, $aircraft->speed);
                     $departingFlight = new App\Flight([
                         'flightNumber' => 'AE' . $flightNumberIncrement,
@@ -123,8 +123,6 @@ class flightSeed extends Seeder
                 }
                 // If there's still flights allowed out of this airport, create some new flights!
                 while ($numFlightsCurrent < $numFlightsAllowed) {
-
-
                     $flightNumberIncrement++;
                     $numFlightsCurrent++;
                 }

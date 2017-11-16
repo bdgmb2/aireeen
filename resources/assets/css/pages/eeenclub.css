@@ -1,11 +1,4 @@
-.description h1 {
-    font-weight: bold;
-    font-size: 1em;
-    margin-bottom: 1em;
-}
-.description p {
-    font-size: 0.75em;
-}
+.description h1 { margin-bottom: 1em; }
 
 .description a {
     text-decoration: none;

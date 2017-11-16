@@ -83,6 +83,7 @@ class CreateAllTables extends Migration
             $table->integer('firstPrice');
             $table->integer('economyPrice');
             $table->boolean('wifi')->default(0);
+            $table->boolean('meals')->default(0);
         });
         Schema::create('trips', function(Blueprint $table) {
             $table->bigIncrements('id');

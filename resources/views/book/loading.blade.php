@@ -33,10 +33,14 @@
                             break;
                     }
                 }, 800);
-
                 setInterval(function() {
-                    $.get({{ route('flights.prog') }});
-                }, 5000);
+                    $.ajax("{{ route('flights.prog', ['token' => $req->accessToken]) }}", {
+                       type: 'GET',
+                       statusCode: {
+                           200: function () { window.location = "{{ route('flights.pick', ['token' => $req->accessToken]) }}"; }
+                       }
+                    });
+                }, 1000);
             });
         </script>
     </head>
@@ -49,10 +53,10 @@
                 <h1 id="dots">Please Wait</h1>
                 <p>We're Finding you the perfect flight!</p>
                 <div class="separator-blue"></div>
-                @if ($type == "roundtrip")
-                    <p class="info">From {{ $source }} to {{ $destination }} on {{ $departDate }} and back on {{ $returnDate }}</p>
+                @if ($req->tripType == "roundtrip")
+                    <p class="info">From {{ $req->source->city }} to {{ $req->destination->city }} on {{ $req->departDate }} and back on {{ $req->returnDate }}</p>
                 @else
-                    <p class="info">From {{ $source }} to {{ $destination }} on {{ $departDate }}</p>
+                    <p class="info">From {{ $req->source->city }} to {{ $req->destination->city }} on {{ $req->departDate }}</p>
                 @endif
             </div>
         </div>
